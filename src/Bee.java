@@ -6,9 +6,7 @@ import java.util.Scanner;
 public class Bee {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        //StringBuilder name = new StringBuilder();
         System.out.println("Введите имя пчелки");
-        //name = name.append(sc.nextLine());
         String name = sc.next();
         System.out.println("Привет! Меня зовут " + name);
         System.out.println("Я - мальчик?");
@@ -22,10 +20,11 @@ public class Bee {
             setActionOrState(ActionOrState.FEMALE_BEE);
     }
 
-    public static void setActionOrState(ActionOrState a){
+    public static void setActionOrState(ActionOrState a){    //метод, отвечающий за структуру программы в целом
+        //ActionOrState - параметр, определяющий текущее состояние или действие
         Scanner sc = new Scanner(System.in);
         switch (a) {
-            case MALE_BEE:
+            case MALE_BEE:    //трутень
                 System.out.println("Матка голодна?");
                 String answer = sc.next();
                 if (answer.toUpperCase().equals("ДА"))
@@ -49,7 +48,7 @@ public class Bee {
                 if (answer.toUpperCase().equals("ДА")) {
                     setActionOrState(ActionOrState.QUEEN_BEE);
                 }
-                else {            //рабочая пчелка
+                else {    //рабочая пчелка
                     System.out.println("Я - рабочая пчелка");
                     setActionOrState(ActionOrState.WORKER_BEE);
                 }
@@ -57,7 +56,7 @@ public class Bee {
                 break;
 
 
-            case QUEEN_BEE:
+            case QUEEN_BEE:    //матка
                 System.out.println("Я голодна?");
                 answer = sc.next();
                 if (answer.toUpperCase().equals("ДА"))
@@ -73,7 +72,7 @@ public class Bee {
                 break;
 
 
-            case WORKER_BEE:
+            case WORKER_BEE:    //рабочая пчелка
                 System.out.println("Сейчас день?");
                 answer = sc.next();
                 if (answer.toUpperCase().equals("ДА")) {
@@ -110,7 +109,7 @@ public class Bee {
                 break;
 
 
-            case CREATE_BROOD:
+            case CREATE_BROOD:    //создать потомство
                 System.out.println("У меня до сих пор нет детей! Нужно это исправить...");
                 System.out.println("Прошло несколько недель");
                 setActionOrState(ActionOrState.QUEEN_BEE);
@@ -125,6 +124,7 @@ public class Bee {
 
             case DEMAND_FOR_FOOD:
                 System.out.println("Я хочу есть! Где мое фуагра?");
+                System.out.println("Кушаю...");
                 setActionOrState(ActionOrState.QUEEN_BEE);
                 break;
 
